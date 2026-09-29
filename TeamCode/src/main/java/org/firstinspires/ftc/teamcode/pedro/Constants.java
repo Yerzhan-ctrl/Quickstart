@@ -2,6 +2,7 @@ package org.firstinspires.ftc.teamcode.pedro;
 
 import com.pedropathing.controllers.Controller;
 import com.pedropathing.follower.Follower;
+import com.pedropathing.math.Vector2D;
 import com.pedropathing.revhub.drivetrains.CoaxialPodConfig;
 import com.pedropathing.revhub.drivetrains.MecanumConfig;
 import com.pedropathing.revhub.drivetrains.SwerveConfig;
@@ -9,6 +10,8 @@ import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
 public class Constants {
+    public static double dtLength = 12.0; // Distance from center to front/back pod in inches
+    public static double dtWidth  = 12.0; // Distance from center to left/right pod in inches
     public static Follower create(HardwareMap h) {
         // return new Follower(Drivetrain, Localizer, Foresight);
         return null;
@@ -46,6 +49,7 @@ public class Constants {
                 c.analogMinVoltage.set(0.010);
                 c.analogMaxVoltage.set(3.290);
                 c.angleOffsetRad.set(0.0); //or 1.5708
+                c.podOffset.set(Vector2D.cartesian(dtLength, dtWidth));
             }
     );
 
@@ -62,6 +66,7 @@ public class Constants {
                 c.analogMinVoltage.set(0.012);
                 c.analogMaxVoltage.set(3.285);
                 c.angleOffsetRad.set(0.0); //or 3.1415
+                c.podOffset.set(Vector2D.cartesian(dtLength, -dtWidth));
             }
     );
 
@@ -78,6 +83,7 @@ public class Constants {
                 c.analogMinVoltage.set(0.010);
                 c.analogMaxVoltage.set(3.290);
                 c.angleOffsetRad.set(0.0); //or 0.7854
+                c.podOffset.set(Vector2D.cartesian(-dtLength, dtWidth));
             }
     );
 
@@ -94,6 +100,7 @@ public class Constants {
                 c.analogMinVoltage.set(0.010);
                 c.analogMaxVoltage.set(3.290);
                 c.angleOffsetRad.set(0.0); //or 2.3561
+                c.podOffset.set(Vector2D.cartesian(-dtLength, -dtWidth));
             }
             //All analog max/min voltage setting values are temporary! I didn't check them on the voltage scale yet!
     );
